@@ -30,5 +30,33 @@ namespace Buoi02.Controllers
 
 			return RedirectToAction("Index");
 		}
+
+		[HttpGet]
+		public IActionResult Edit(int id)
+		{
+			var book = books.SingleOrDefault(p => p.BookId == id);
+			if (book == null)
+			{
+				return NotFound();
+			}
+			else
+			{
+				return View(book);
+			}
+		}
+
+		[HttpPost]
+		public IActionResult Edit(Book editModel)
+		{
+			var book = books.SingleOrDefault(p => p.BookId == editModel.BookId);
+			if (book != null)
+			{
+				book.Title = editModel.Title;
+				book.Price = editModel.Price;
+				book.Author = editModel.Author;
+				book.IsExpire = editModel.IsExpire;
+			}
+			return RedirectToAction("Index");
+		}
 	}
 }

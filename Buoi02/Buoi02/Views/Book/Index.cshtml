@@ -1,60 +1,24 @@
-﻿@model IEnumerable<Buoi02.Models.Book>
+﻿@model List<Book>
 
-@{
-	ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
-<p>
-	<a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-	<thead>
+<table class="table table-bordered">
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Price</th>
+		<th>Action</th>
+	</tr>
+	@foreach(var book in Model)
+	{
 		<tr>
-			<th>
-				@Html.DisplayNameFor(model => model.BookId)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Title)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Author)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Price)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.IsExpire)
-			</th>
-			<th></th>
+			<td>@book.BookId</td>
+			<td>@book.Title</td>
+			<td>@book.Author</td>
+			<td>@book.Price</td>
+			<td>
+				<a asp-action="Edit" asp-route-id="@book.BookId" class="btn btn-success">Sửa</a>
+				<a asp-action="Delete" asp-route-id="@book.BookId" class="btn btn-danger">Xóa</a>
+			</td>
 		</tr>
-	</thead>
-	<tbody>
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.BookId)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Title)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Author)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Price)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.IsExpire)
-				</td>
-				<td>
-					@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-					@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-					@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-				</td>
-			</tr>
-		}
-	</tbody>
+	}
 </table>
