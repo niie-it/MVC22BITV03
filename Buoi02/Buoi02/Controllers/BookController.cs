@@ -58,5 +58,20 @@ namespace Buoi02.Controllers
 			}
 			return RedirectToAction("Index");
 		}
+
+		public IActionResult Delete(int id)
+		{
+			var book = books.SingleOrDefault(p => p.BookId == id);
+			if (book != null)
+			{
+				books.Remove(book);
+				TempData["Message"] = $"Xóa sách {book.Title} thành công";
+			}
+			else
+			{
+				TempData["Message"] = $"Không có sách có mã {id} để xóa";
+			}
+			return RedirectToAction("Index");
+		}
 	}
 }
