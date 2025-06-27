@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Demo Upload File</h1>
+<div class="text-danger">@TempData["Message"]</div>
+<form enctype="multipart/form-data" asp-action="UploadFile">
+    <h3>Upload Single file</h3>
+    <input type="file" name="MyFile" />
+    <button class="btn btn-success">Upload</button>
+</form>
+<form enctype="multipart/form-data" asp-action="UploadFiles">
+    <h3>Upload Multiple file</h3>
+    <input type="file" name="MyFiles" multiple />
+    <button class="btn btn-success">Upload</button>
+</form>
+
