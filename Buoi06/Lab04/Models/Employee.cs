@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
 namespace Lab04.Models
@@ -8,6 +9,7 @@ namespace Lab04.Models
 		public int Id { get; set; }
 
 		[Display(Name = "Mã nhân viên")]
+		[Remote(controller:"Employee", action:"IsExistedEmployee")]
 		public string EmployeeNo { get; set; }
 
 		[Display(Name = "Họ tên")]
@@ -26,6 +28,7 @@ namespace Lab04.Models
 
 		[Display(Name = "Ngày sinh")]
 		[DataType(DataType.Date)]
+		[BirthDateCheck]
 		public DateTime BirthDate { get; set; }
 
 		[Display(Name = "Nam")]
