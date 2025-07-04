@@ -1,0 +1,6 @@
+﻿li a{text-decoration: none; color: magenta;}
+
+#myfooter{
+    text-align:center; color: red; border: 1px solid blue; padding: 5px;
+}
+.mycontent{min-height:600px; border: 1px dotted green; padding: 5px;}

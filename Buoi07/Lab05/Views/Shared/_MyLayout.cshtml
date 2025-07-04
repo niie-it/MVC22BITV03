@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/css/MyLayout.css" />
+	@await RenderSectionAsync("MyStyles", required: false)
+</head>
+<body>
+	<div class="container">
+		<header>#HEDAER</header>
+		<div class="row m-0">
+			<nav class="col-3 mycontent">
+				#MENU
+				@{
+					var data = new List<Loai>
+					{
+						new Loai{MaLoai=1, TenLoai="Tivi"},
+						new Loai{MaLoai=2, TenLoai="Tủ lạnh"},
+						new Loai{MaLoai=3, TenLoai="Máy điều hòa"}
+					};
+				}
+				@await Html.PartialAsync("_Menu", data)
+			</nav>
+			<div class="col-9 mycontent">
+				@RenderBody()
+			</div>
+		</div>
+		<footer id="myfooter">Bản quyền thuộc về 22BITV03</footer>
+	</div>
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+	@await RenderSectionAsync("MyScripts", required: false)
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Welcome</h1>
+	<p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@{
+	var data = new List<Loai>
+	{
+		new Loai{MaLoai=1, TenLoai="Điện thoại"},
+		new Loai{MaLoai=2, TenLoai="Tablet"},
+		new Loai{MaLoai=3, TenLoai="Tivi"}
+	};
+}
+@await Html.PartialAsync("_Menu", data)
+@* @section Scripts {
+	<script>
+		$(document).ready(function () {
+			console.log("Load done");
+		});
+	</script>
+} *@
