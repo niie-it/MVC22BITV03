@@ -1,0 +1,33 @@
+﻿@model List<Lab07.Data.Supplier>
+@{
+	ViewData["Title"] = "Index";
+}
+<h2>Supplier list</h2>
+<form asp-action="Index">
+	<fieldset>
+		<legend>Search</legend>
+		<input name="Keyword" placeholder="Input keyword here..." />
+		<button class="btn btn-success">Search</button>
+	</fieldset>
+</form>
+<table class="table table-bordered">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Email</th>
+		<th>Phone</th>
+		<th>Logo</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.Id</td>
+			<td>@item.Name</td>
+			<td>@item.Email</td>
+			<td>@item.Phone</td>
+			<td>
+				<img src="~/images/Suppliers/@item.Logo" />
+			</td>
+		</tr>
+	}
+</table>
