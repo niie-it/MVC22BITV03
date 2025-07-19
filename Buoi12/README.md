@@ -38,3 +38,14 @@
 	- Thêm thuộc tính ```enctype="multipart/form-data"``` cho form
  	- Chỉnh thuộc tính ```Image``` thành ```type="file"```
 - Action POST vẫn truyền ```ViewBag.Suppliers```,... qua View cho trường hợp nhập sai
+
+## 3. Action ```Edit()``` chỉnh sửa sản phẩm
+- Cần đổ dữ liệu cho DropDown List chọn loại/nhà cung cấp
+	- Ở Action: ```ViewBag.Suppliers = new SelectList(_context.Suppliers.ToList(), "Id", "Name", product,SupplierId);```
+ 	- Ở View, thêm/hiệu chỉnh thuộc tính ```asp-items="ViewBag.Suppliers"``` cho thẻ ```<select>```
+- Chỉnh sửa cột ```Description``` thành dạng multiple line ==> sử dụng thẻ ```<textarea>```
+- Chỉnh sửa cho phép upload hình:
+	- Thêm thuộc tính ```enctype="multipart/form-data"``` cho form
+ 	- Chỉnh thuộc tính ```Image``` thành hidden field để giữ giá trị nếu người dùng không thay đổi hình
+  	- Thêm field upload hình ```<input name="NewImage" type="file" />```
+- Action POST vẫn truyền ```ViewBag.Suppliers```,... qua View cho trường hợp nhập sai dữ liệu
