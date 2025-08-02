@@ -6,6 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MyEshopContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("MyEShop")));
+builder.Services.AddAuthentication("MyCookieAuth")
+	.AddCookie("MyCookieAuth", options =>
+	{
+		options.Cookie.Name = "MyCookieAuth";
+		options.LoginPath = "/Account/Login";
+		options.AccessDeniedPath = "/Account/AccessDenied";
+	});
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -21,7 +29,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyEShop01.Entities;
 using MyEShop01.Models;
@@ -15,6 +16,7 @@ namespace MyEShop01.Controllers
 		}
 
 		[HttpGet]
+		[Authorize]
 		public IActionResult Search()
 		{
 			return View();
@@ -38,7 +40,7 @@ namespace MyEShop01.Controllers
 		}
 
 
-
+		[Authorize(Roles ="Sales")]
 		public IActionResult TimKiem()
 		{
 			return View();
